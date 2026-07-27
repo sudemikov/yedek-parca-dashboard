@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yedek Parça Operasyon Kontrol Kulesi | Anadolu Isuzu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-name">ANADOLU</div>
+      <div class="brand-name brand-isuzu">ISUZU</div>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-item active" href="#"><span class="nav-ic">🏠</span> Dashboard</a>
+      <a class="nav-item" href="#"><span class="nav-ic">📋</span> Sipariş Takip</a>
+      <a class="nav-item" href="#"><span class="nav-ic">🔁</span> Akan Parça (2011)</a>
+      <a class="nav-item" href="#"><span class="nav-ic">⏸️</span> Akmayan Parça (2012)</a>
+      <a class="nav-item" href="#"><span class="nav-ic">🗄️</span> SAP Kontrol</a>
+      <a class="nav-item" href="#"><span class="nav-ic">📑</span> Raporlar</a>
+      <a class="nav-item" href="#"><span class="nav-ic">🔔</span> Bildirimler <span class="pill">5</span></a>
+      <a class="nav-item" href="#"><span class="nav-ic">⚙️</span> Parametreler</a>
+      <a class="nav-item" href="#"><span class="nav-ic">👤</span> Kullanıcı Yönetimi</a>
+    </nav>
+
+    <div class="filter-box">
+      <div class="filter-title">HIZLI FİLTRE</div>
+
+      <label>Tarih Aralığı</label>
+      <select><option>Son 7 Gün</option><option>Son 30 Gün</option><option>Bu Ay</option></select>
+
+      <label>Kanal</label>
+      <select><option>Tümü</option><option>2011 (Akan)</option><option>2012 (Akmayan)</option></select>
+
+      <label>Sorumlu Departman</label>
+      <select><option>Tümü</option><option>İç Lojistik</option><option>İthalat</option><option>Depo</option></select>
+
+      <label>Durum</label>
+      <select><option>Tümü</option><option>Bekliyor</option><option>İşlemde</option></select>
+
+      <button class="clear-btn">↻ Filtreyi Temizle</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <h1>YEDEK PARÇA OPERASYON KONTROL KULESİ</h1>
+        <p>Anlık Sipariş ve Süreç Takip Ekranı</p>
+      </div>
+      <div class="topbar-right">
+        <div class="tb-chip">📅 22 Mayıs 2025 Perşembe</div>
+        <div class="tb-chip">🕐 10:42</div>
+        <div class="tb-bell">🔔<span class="dot">5</span></div>
+        <div class="tb-user">
+          <div class="avatar">👤</div>
+          <div>
+            <div class="uname">Ali Yılmaz</div>
+            <div class="urole">Operasyon Yöneticisi</div>
+          </div>
+          <span class="chev">⌄</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- KPI CARDS -->
+    <section class="kpi-grid" id="kpiGrid"></section>
+
+    <!-- WAITING REASON CARDS -->
+    <section class="panel">
+      <h2 class="panel-title">BEKLEME NEDENİNE GÖRE DAĞILIM</h2>
+      <div class="reason-grid" id="reasonGrid"></div>
+    </section>
+
+    <!-- CHARTS ROW -->
+    <section class="charts-row">
+      <div class="panel chart-panel">
+        <h2 class="panel-title">AKAN / AKMAYAN DAĞILIMI</h2>
+        <div class="donut-wrap">
+          <canvas id="akanChart"></canvas>
+          <div class="donut-center" id="akanCenter"></div>
+          <ul class="legend" id="akanLegend"></ul>
+        </div>
+      </div>
+
+      <div class="panel chart-panel">
+        <h2 class="panel-title">BEKLEME NEDENİ DAĞILIMI</h2>
+        <canvas id="barChart" height="230"></canvas>
+      </div>
+
+      <div class="panel chart-panel">
+        <h2 class="panel-title">KANAL DAĞILIMI</h2>
+        <div class="donut-wrap">
+          <canvas id="kanalChart"></canvas>
+          <div class="donut-center" id="kanalCenter"></div>
+          <ul class="legend" id="kanalLegend"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLE + NOTIFICATIONS -->
+    <section class="bottom-row">
+      <div class="panel table-panel">
+        <div class="panel-head">
+          <h2 class="panel-title">KRİTİK SİPARİŞLER (İLK 5)</h2>
+          <a href="#" class="link">Tümünü Gör</a>
+        </div>
+        <table id="ordersTable">
+          <thead>
+            <tr>
+              <th>Sipariş No</th><th>Malzeme Kodu</th><th>Malzeme Adı</th><th>Kanal</th>
+              <th>Neden</th><th>Sorumlu</th><th>Teslim Tarihi</th><th>Durum</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="panel notif-panel">
+        <div class="panel-head">
+          <h2 class="panel-title">BİLDİRİMLER</h2>
+          <a href="#" class="link">Tümünü Gör</a>
+        </div>
+        <ul class="notif-list" id="notifList"></ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
