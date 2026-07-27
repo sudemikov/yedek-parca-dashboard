@@ -1,0 +1,192 @@
+:root{
+  --isuzu-red:#e11d2e;
+  --isuzu-red-dark:#c31423;
+  --navy:#151b2e;
+  --navy-2:#1c2338;
+  --bg:#f3f5f9;
+  --panel:#ffffff;
+  --text:#1c2333;
+  --muted:#7a8296;
+  --border:#eaecf2;
+  --green:#2fb872;
+  --blue:#3b82f6;
+  --orange:#f5a524;
+  --purple:#8b5cf6;
+  --teal:#14b8a6;
+  --radius:14px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:14px;
+}
+
+.layout{display:flex;min-height:100vh;}
+
+/* SIDEBAR */
+.sidebar{
+  width:230px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  flex-shrink:0;
+}
+.brand{padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.08);}
+.brand-name{font-weight:800;font-size:18px;letter-spacing:1px;line-height:1.2;}
+.brand-isuzu{color:var(--isuzu-red);}
+
+.nav{padding:14px 12px;display:flex;flex-direction:column;gap:2px;flex:1;}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  color:#b7bccb;text-decoration:none;
+  padding:10px 12px;border-radius:8px;font-size:13.5px;font-weight:500;
+  transition:background .15s;
+}
+.nav-item .nav-ic{font-size:14px;width:16px;text-align:center;}
+.nav-item:hover{background:rgba(255,255,255,.06);color:#fff;}
+.nav-item.active{background:var(--isuzu-red);color:#fff;}
+.pill{
+  margin-left:auto;background:#fff;color:var(--isuzu-red);
+  font-size:11px;font-weight:700;border-radius:20px;padding:1px 7px;
+}
+
+.filter-box{padding:16px 16px 22px;border-top:1px solid rgba(255,255,255,.08);}
+.filter-title{font-size:11px;letter-spacing:1px;color:#8b91a5;margin-bottom:12px;font-weight:700;}
+.filter-box label{display:block;font-size:11.5px;color:#9aa0b3;margin:10px 0 5px;}
+.filter-box select{
+  width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.12);
+  background:var(--navy-2);color:#e7e9f2;font-size:12.5px;
+}
+.clear-btn{
+  margin-top:16px;width:100%;padding:10px;border:none;border-radius:8px;
+  background:var(--isuzu-red);color:#fff;font-weight:700;font-size:12.5px;cursor:pointer;
+}
+.clear-btn:hover{background:var(--isuzu-red-dark);}
+
+/* MAIN */
+.main{flex:1;padding:20px 26px 40px;min-width:0;}
+
+.topbar{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  background:var(--panel);border-radius:var(--radius);
+  padding:18px 22px;margin-bottom:18px;box-shadow:0 1px 2px rgba(20,25,50,.04);
+  flex-wrap:wrap;gap:12px;
+}
+.topbar h1{font-size:19px;letter-spacing:.3px;font-weight:800;}
+.topbar p{font-size:12.5px;color:var(--muted);margin-top:3px;}
+.topbar-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.tb-chip{
+  background:var(--bg);padding:7px 12px;border-radius:8px;font-size:12.5px;color:var(--text);
+  display:flex;align-items:center;gap:6px;
+}
+.tb-bell{position:relative;font-size:16px;padding:6px;}
+.tb-bell .dot{
+  position:absolute;top:-2px;right:-2px;background:var(--isuzu-red);color:#fff;
+  font-size:9px;border-radius:50%;width:15px;height:15px;display:flex;align-items:center;justify-content:center;
+}
+.tb-user{display:flex;align-items:center;gap:8px;}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;}
+.uname{font-size:12.5px;font-weight:700;}
+.urole{font-size:11px;color:var(--muted);}
+.chev{color:var(--muted);font-size:12px;}
+
+/* KPI */
+.kpi-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:18px;
+}
+.kpi-card{
+  background:var(--panel);border-radius:var(--radius);padding:16px;
+  box-shadow:0 1px 2px rgba(20,25,50,.04);
+}
+.kpi-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.kpi-label{font-size:10.5px;color:var(--muted);font-weight:700;letter-spacing:.4px;}
+.kpi-icon{
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;
+}
+.kpi-value{font-size:26px;font-weight:800;display:flex;align-items:baseline;gap:8px;}
+.kpi-delta{font-size:12px;font-weight:700;}
+.kpi-delta.up{color:var(--green);}
+.kpi-delta.down{color:var(--isuzu-red);}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+
+/* PANEL generic */
+.panel{
+  background:var(--panel);border-radius:var(--radius);padding:18px 20px;
+  box-shadow:0 1px 2px rgba(20,25,50,.04);
+}
+.panel-title{font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--text);margin-bottom:14px;}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.link{font-size:12px;color:var(--isuzu-red);text-decoration:none;font-weight:600;}
+
+/* Reason cards */
+.panel{margin-bottom:18px;}
+.reason-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.reason-card{border:1px solid var(--border);border-radius:12px;padding:14px;}
+.reason-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+.reason-name{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.3px;}
+.reason-ic{font-size:15px;}
+.reason-value{display:flex;align-items:baseline;gap:8px;}
+.reason-num{font-size:22px;font-weight:800;}
+.reason-delta{font-size:11.5px;font-weight:700;}
+.reason-delta.up{color:var(--green);}
+.reason-delta.down{color:var(--isuzu-red);}
+.reason-bar{height:4px;border-radius:4px;background:var(--border);margin-top:10px;overflow:hidden;}
+.reason-bar-fill{height:100%;border-radius:4px;}
+
+/* Charts row */
+.charts-row{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:16px;margin-bottom:18px;align-items:stretch;}
+.chart-panel{display:flex;flex-direction:column;}
+.donut-wrap{display:flex;align-items:center;gap:18px;justify-content:center;position:relative;flex:1;}
+.donut-box{position:relative;width:170px;height:170px;flex-shrink:0;}
+.donut-center{
+  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:170px;text-align:center;pointer-events:none;
+}
+.donut-center .dc-num{font-size:26px;font-weight:800;display:block;}
+.donut-center .dc-label{font-size:12px;color:var(--muted);}
+.legend{list-style:none;font-size:12.5px;}
+.legend li{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.legend .sw{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+.legend .leg-main{font-weight:700;}
+.legend .leg-sub{color:var(--muted);font-size:11.5px;}
+
+/* Bottom row */
+.bottom-row{display:grid;grid-template-columns:1.7fr 1fr;gap:16px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{
+  text-align:left;color:var(--muted);font-weight:700;font-size:11px;letter-spacing:.3px;
+  padding:8px 10px;border-bottom:1px solid var(--border);
+}
+td{padding:10px 10px;border-bottom:1px solid var(--border);color:var(--text);}
+tr:last-child td{border-bottom:none;}
+.status{
+  padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;
+}
+.status.islemde{background:#fde5e5;color:var(--isuzu-red);}
+.status.bekliyor{background:#fef3d6;color:#b8860b;}
+
+.notif-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.notif-item{display:flex;gap:10px;}
+.notif-ic{
+  width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;flex-shrink:0;
+}
+.notif-title{font-size:12.5px;font-weight:700;}
+.notif-desc{font-size:11.5px;color:var(--muted);margin-top:2px;}
+.notif-time{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap;}
+
+@media (max-width:1200px){
+  .kpi-grid{grid-template-columns:repeat(3,1fr);}
+  .reason-grid{grid-template-columns:repeat(3,1fr);}
+  .charts-row{grid-template-columns:1fr;}
+  .bottom-row{grid-template-columns:1fr;}
+}
+@media (max-width:720px){
+  .sidebar{display:none;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .reason-grid{grid-template-columns:repeat(2,1fr);}
+}
